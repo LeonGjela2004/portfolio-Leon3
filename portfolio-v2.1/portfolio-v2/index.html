@@ -1,0 +1,168 @@
+<!doctype html>
+<!-- index.html: forsiden. Menuen fører til de andre sider, CSS ligger i css/style.css og JavaScript i js/main.js. -->
+<html lang="da">
+<head>
+<meta charset="utf-8">
+<title>Leon Gjela Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- Henter Roboto fra Google Fonts. Navnene bruges i CSS (--f-body og --f-mono). -->
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+<!-- Kobler style.css på. Hver class="..." herunder rammer en regel i den fil. -->
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<!-- MENU: class="top" rammer .top i CSS (position: sticky, så menuen bliver siddende øverst). -->
+<header class="top">
+  <div class="wrap">
+    <!-- Logoet til venstre i menuen (.brand i CSS). Prikken foran navnet tegnes af CSS. -->
+    <a class="brand" href="index.html" aria-current="page"><span class="brand-long">Leon Gjela</span></a>
+    <nav aria-label="Hovedmenu">
+      <ul class="nav">
+        <!-- Siden, man er på, har aria-current="page". CSS (.nav a[aria-current="page"]) gør netop det punkt orange. -->
+        <li><a href="om-mig.html">Om mig</a></li>
+        <li><a href="casestudy.html">Casestudy</a></li>
+        <li><a href="kontakt.html">Kontakt</a></li>
+      </ul>
+    </nav>
+  </div>
+  <!-- VEJEN: .track i CSS. Bilen ligger inde i den. -->
+  <div class="track" aria-hidden="true">
+    <!--
+      BILEN: Font Awesome gør <i> om til en SVG. JavaScript sætter --p ved scroll, og .car-h flytter bilen ud fra den.
+    -->
+    <div class="car-h"><i class="fa-solid fa-car-side"></i></div>
+  </div>
+</header>
+
+<main>
+  <!-- TOP: class="hero" rammer .hero i CSS (stor top med lysglimt). id="top" er et ankerpunkt. -->
+  <section class="hero" id="top" aria-labelledby="h-hero">
+    <!-- .wrap holder indholdet i max 1120px og centreret. På computer lægges tekst og portræt i to kolonner. -->
+    <div class="wrap">
+      <!-- .hero-copy lægger tekstdelen under hinanden med luft imellem. -->
+      <div class="hero-copy">
+        <!-- .eyebrow: lille label med mono-skrift, store bogstaver og neon-farve. -->
+        <p class="eyebrow">Multimediedesigner under uddannelse</p>
+        <!-- Hovedoverskrift. "h1 .sub" i CSS rammer underoverskriften og gør den mindre og dæmpet. -->
+        <h1 id="h-hero">Hej! Jeg er Leon.<span class="sub">Jeg designer og koder grænseflader.</span></h1>
+        <!-- .lead: indledning, lidt større end almindelig tekst. -->
+        <p class="lead">Sæt dig godt til rette, spænd selen og scroll dig en tur gennem mit portfolio. Jeg søger en praktikplads eller et studiejob inden for UI-design og frontend.</p>
+        <!-- .actions lægger knapperne i en række, som brydes til næste linje, hvis der ikke er plads. -->
+        <div class="actions">
+          <!-- Et link, der ser ud som en knap. .btn er formen, .btn--accent gør den orange. Pilen er et Font Awesome-ikon. -->
+          <a class="btn btn--accent" href="casestudy.html">Se mine casestudies <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+          <a class="btn btn--line" href="om-mig.html">Læs om mig</a>
+        </div>
+        <!-- .facts: boks med kolonner. dt er label og dd er værdi. -->
+        <dl class="facts">
+          <div><dt>Fokus</dt><dd>UI-design, UX og frontend</dd></div>
+          <div><dt>Søger</dt><dd>Praktikplads eller studiejob</dd></div>
+          <div><dt>Værktøjer</dt><dd>Figma, HTML, CSS, JavaScript</dd></div>
+        </dl>
+      </div>
+      <!-- .portrait-frame: ramme i 4/5-form med orange skygge bagved. Billedet fylder rammen (object-fit: cover). -->
+      <figure class="portrait">
+        <div class="portrait-frame"><img src="img/portraet.jpg" width="800" height="1000" alt="Leon Gjela sidder ved et bord med havet i baggrunden"></div>
+      </figure>
+    </div>
+  </section>
+
+  <!-- .sec er den runde plade. .sec--alt giver lysere baggrund, så sektionerne skifter farve ned ad siden. -->
+  <section class="sec sec--alt" aria-labelledby="h-interesser">
+    <div class="wrap">
+      <!-- .sec-head: label, overskrift og indledning øverst i sektionen. -->
+      <div class="sec-head">
+        <p class="eyebrow">Interesser og værktøjer</p>
+        <h2 id="h-interesser">Det jeg arbejder med</h2>
+        <p class="lead">Jeg tegner det i Figma og koder det i HTML, CSS og JavaScript.</p>
+      </div>
+      <!-- .chips gør listen til små piller i en række. Den anden liste (Værktøjer) bruger samme klasse. -->
+      <ul class="chips" aria-label="Interesser">
+        <li>UI-design</li>
+        <li>UX-design</li>
+        <li>Frontend</li>
+      </ul>
+      <ul class="chips" style="margin-top:14px" aria-label="Værktøjer">
+        <li>Figma</li>
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>JavaScript</li>
+        <li>Visual Studio</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Sektionen med de tre case-kort. -->
+  <section class="sec" aria-labelledby="h-preview">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Casestudy</p>
+        <h2 id="h-preview">Tre projekter</h2>
+        <p class="lead">Research, design og test. Vælg et projekt og se, hvad jeg gjorde.</p>
+      </div>
+      <!-- .cards: gitter med så mange kolonner, som der er plads til. -->
+      <div class="cards">
+        <!--
+          Hele kortet er et link. .card giver formen og orange kant ved hover, og .card-logo viser logoet i samme form på alle. De to andre kort er ens.
+        -->
+        <a class="card" href="case-rsok.html">
+          <img class="card-logo card-logo--rsok" src="img/rsok-logo.png" width="147" height="127" loading="lazy" alt="Rold Skov OK-logoet">
+          <p class="tag">Webdesign og frontend</p>
+          <h3>RSOK: Et løb med retning</h3>
+          <p>Ny og mere overskuelig hjemmeside til Rold Skov Orienteringsklub.</p>
+          <span class="go">Se casen <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
+        </a>
+        <a class="card" href="case-couriuscooks.html">
+          <img class="card-logo card-logo--couriuscooks" src="img/couriuscooks-logo.png" width="442" height="352" loading="lazy" alt="Curious Cooks-logoet">
+          <p class="tag">UX/UI og kode</p>
+          <h3>CouriusCooks</h3>
+          <p>Opskriftshjemmeside med kategorier og Pro Chef-funktioner.</p>
+          <span class="go">Se casen <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
+        </a>
+        <a class="card" href="case-nordcase.html">
+          <img class="card-logo card-logo--nordcase" src="img/nordcase-logo.png" width="931" height="377" loading="lazy" alt="Nordcase-logoet">
+          <p class="tag">Branding og webshop</p>
+          <h3>Nordcase</h3>
+          <p>Visuel identitet, webshop og digital markedsføring for Nordcase ApS.</p>
+          <span class="go">Se casen <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- .sec--band: blå plade med en knap til kontaktsiden. -->
+  <section class="sec sec--band" aria-labelledby="h-cta">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Kontakt</p>
+        <h2 id="h-cta">Du er nået til vejs ende.</h2>
+        <p class="lead">Ingen fartbøder her, bare en kontaktformular.</p>
+      </div>
+      <div class="actions">
+        <a class="btn btn--accent" href="kontakt.html">Kontakt mig <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- Bunden er ens på alle sider. -->
+<footer class="foot">
+  <div class="wrap">
+    <span>© 2026 Leon Gjela. Portfolio version 2.</span>
+    <div class="tools">
+      <span>Skrevet i HTML, CSS og JavaScript. Skrifttyper: Roboto og Roboto Mono (Google Fonts). Ikoner: Font Awesome Free (CC BY 4.0).</span>
+    </div>
+  </div>
+</footer>
+
+<!-- Ikoner: Font Awesome Free 6.5.2 (ikoner CC BY 4.0, kode MIT). Scriptet bytter <i>-tagsene ud med SVG. -->
+<!-- Font Awesome 6.5.2: scripts, der gør hvert <i class="fa-...">  om til et SVG-ikon. defer = hent i baggrunden. -->
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/js/fontawesome.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/js/solid.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/js/regular.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/js/brands.min.js"></script>
+<!-- Vores eget JavaScript: bilen, formularen og kopier-knappen. -->
+<script src="js/main.js"></script>
+</body>
+</html>

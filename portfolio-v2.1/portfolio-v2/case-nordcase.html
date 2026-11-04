@@ -1,0 +1,151 @@
+<!doctype html>
+<!-- case-nordcase.html: case om Nordcase. Samme opbygning som de andre casesider. -->
+<html lang="da">
+<head>
+<meta charset="utf-8">
+<title>Nordcase | Casestudy | Leon Gjela</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- Henter Roboto fra Google Fonts. Navnene bruges i CSS (--f-body og --f-mono). -->
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+<!-- Kobler style.css på. Hver class="..." herunder rammer en regel i den fil. -->
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<!-- MENU: class="top" rammer .top i CSS (position: sticky, så menuen bliver siddende øverst). -->
+<header class="top">
+  <div class="wrap">
+    <!-- Logoet til venstre i menuen (.brand i CSS). Prikken foran navnet tegnes af CSS. -->
+    <a class="brand" href="index.html"><span class="brand-long">Leon Gjela</span></a>
+    <nav aria-label="Hovedmenu">
+      <ul class="nav">
+        <!-- Siden, man er på, har aria-current="page". CSS (.nav a[aria-current="page"]) gør netop det punkt orange. -->
+        <li><a href="om-mig.html">Om mig</a></li>
+        <li><a href="casestudy.html" aria-current="page">Casestudy</a></li>
+        <li><a href="kontakt.html">Kontakt</a></li>
+      </ul>
+    </nav>
+  </div>
+  <!-- VEJEN: .track i CSS. Bilen ligger inde i den. -->
+  <div class="track" aria-hidden="true">
+    <!--
+      BILEN: Font Awesome gør <i> om til en SVG. JavaScript sætter --p ved scroll, og .car-h flytter bilen ud fra den.
+    -->
+    <div class="car-h"><i class="fa-solid fa-car-side"></i></div>
+  </div>
+</header>
+
+<main>
+  <!-- .page-hero: den lavere top på undersider. -->
+  <section class="page-hero" aria-labelledby="h-case">
+    <div class="wrap">
+      <div class="hero-copy">
+        <!-- .crumb: link tilbage til oversigten. -->
+        <a class="crumb" href="casestudy.html"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Alle casestudies</a>
+        <p class="eyebrow">Nordcase ApS</p>
+        <h1 id="h-case">Nordcase: Et brand fra ide til webshop</h1>
+        <p class="lead">Udvikling af visuel identitet, branding, webshop og digital markedsføring.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- .sec er den runde plade, .sec--alt giver lysere baggrund. -->
+  <section class="sec sec--alt" aria-label="Om casen">
+    <div class="wrap">
+      <article class="case">
+        <!-- .case-top: intro til venstre og proces til højre (to kolonner på computer). -->
+        <div class="case-top">
+          <div class="case-intro">
+            <!-- .meta: begreb (dt) og forklaring (dd) under hinanden. -->
+            <dl class="meta">
+              <div><dt>Målgruppe</dt><dd>Rejseinteresserede og kvalitetsbevidste kunder, der søger funktionelle kufferter med et stilrent og eksklusivt design.</dd></div>
+              <div><dt>Problemstilling</dt><dd>Hvordan skaber vi en stærk og genkendelig visuel identitet for Nordcase og udvikler en brugervenlig webshop, der præsenterer produkterne professionelt, opbygger tillid og tiltrækker den rette målgruppe?</dd></div>
+            </dl>
+            <!-- Link til den rigtige hjemmeside. target="_blank" åbner et nyt vindue. -->
+            <a class="visit" href="https://nordcase.dk/" target="_blank" rel="noopener">Besøg nordcase.dk <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+          </div>
+          <!-- .route: nummerliste, hvor CSS skjuler tallene og tegner prikker (::before) og en stiplet linje (::after). -->
+          <ol class="route" aria-label="Processen">
+            <li>
+              <!-- Hvert trin er en overskrift og en liste (.steps). De andre trin er bygget på samme måde. -->
+              <h4>Research</h4>
+              <ul class="steps">
+                <li>Undersøgelse af målgruppen og deres behov</li>
+                <li>Analyse af konkurrenter, branding og markedsføring</li>
+                <li>Strategi for produktpræsentation og digital markedsføring</li>
+              </ul>
+            </li>
+            <li>
+              <h4>Design</h4>
+              <ul class="steps">
+                <li>Logo og visuel identitet</li>
+                <li>Farver, typografi, layout og branding</li>
+                <li>Brugervenlig og responsiv webshop</li>
+                <li>Produktbilleder: produktion, redigering og optimering</li>
+                <li>Produktbeskrivelser og indhold til siden</li>
+              </ul>
+            </li>
+            <li>
+              <h4>Marketing</h4>
+              <ul class="steps">
+                <li>Visuelt indhold til digital markedsføring</li>
+                <li>Målgruppeorienteret kommunikation og brandpositionering</li>
+                <li>Fokus på genkendelighed, tillid og interesse</li>
+              </ul>
+            </li>
+            <li>
+              <h4>Test</h4>
+              <ul class="steps">
+                <li>Gennemgang og evaluering af design, navigation og funktionalitet</li>
+                <li>Løbende justeringer af indhold, billeder og produktpræsentation</li>
+              </ul>
+            </li>
+          </ol>
+        </div>
+        <!-- .case-two: boksene "Min rolle" og "Hvad jeg lærte" i to kolonner på computer. -->
+        <div class="case-two">
+          <div>
+            <h4>Min rolle</h4>
+            <p class="prose">Jeg har selv stået for Nordcases visuelle identitet, logo, hjemmeside, produktbilleder, billedredigering, indhold og markedsføring. Jeg har arbejdet med UX/UI-design, branding og digital kommunikation for at skabe en professionel og genkendelig virksomhed, og med hvordan Nordcase præsenterer sine produkter og taler til forskellige målgrupper.</p>
+          </div>
+          <div>
+            <h4>Hvad jeg lærte</h4>
+            <p class="prose">Jeg har fået erfaring med at bygge et brand fra ide til færdig digital løsning. Projektet har givet mig en større forståelse for, hvordan visuel identitet, kommunikation og brugeroplevelse spiller sammen i et sammenhængende brand.</p>
+          </div>
+        </div>
+
+        <!-- Billederne: .shots er et gitter. Her er der et billede (logoet), og .shots--single begrænser bredden. -->
+        <div class="shots shots--single ">
+          <figure><img class="shot-img" src="img/nordcase-logo.png" width="931" height="377" loading="lazy" alt="Nordcase-logoet: et N af tynde linjer og ordet NORDCASE med NORD i fed skrift"><figcaption>Logo og visuel identitet</figcaption></figure>
+        </div>
+      </article>
+
+      <!-- .next: en række med tekst og knap til næste side. -->
+      <div class="next">
+        <a class="btn btn--line" href="casestudy.html"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Alle casestudies</a>
+        <a class="btn btn--accent" href="kontakt.html">Kontakt mig <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- Bunden er ens på alle sider. -->
+<footer class="foot">
+  <div class="wrap">
+    <span>© 2026 Leon Gjela. Portfolio version 2.</span>
+    <div class="tools">
+      <span>Skrevet i HTML, CSS og JavaScript. Skrifttyper: Roboto og Roboto Mono (Google Fonts). Ikoner: Font Awesome Free (CC BY 4.0).</span>
+    </div>
+  </div>
+</footer>
+
+<!-- Ikoner: Font Awesome Free 6.5.2 (ikoner CC BY 4.0, kode MIT). Scriptet bytter <i>-tagsene ud med SVG. -->
+<!-- Font Awesome 6.5.2: scripts, der gør hvert <i class="fa-...">  om til et SVG-ikon. defer = hent i baggrunden. -->
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/js/fontawesome.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/js/solid.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/js/regular.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/js/brands.min.js"></script>
+<!-- Vores eget JavaScript: bilen, formularen og kopier-knappen. -->
+<script src="js/main.js"></script>
+</body>
+</html>

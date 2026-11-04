@@ -1,0 +1,235 @@
+<!doctype html>
+<!-- om-mig.html: historie, hobbyer, kompetencer og test af siden. -->
+<html lang="da">
+<head>
+<meta charset="utf-8">
+<title>Om mig | Leon Gjela</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- Henter Roboto fra Google Fonts. Navnene bruges i CSS (--f-body og --f-mono). -->
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+<!-- Kobler style.css på. Hver class="..." herunder rammer en regel i den fil. -->
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<!-- MENU: class="top" rammer .top i CSS (position: sticky, så menuen bliver siddende øverst). -->
+<header class="top">
+  <div class="wrap">
+    <!-- Logoet til venstre i menuen (.brand i CSS). Prikken foran navnet tegnes af CSS. -->
+    <a class="brand" href="index.html"><span class="brand-long">Leon Gjela</span></a>
+    <nav aria-label="Hovedmenu">
+      <ul class="nav">
+        <!-- Siden, man er på, har aria-current="page". CSS (.nav a[aria-current="page"]) gør netop det punkt orange. -->
+        <li><a href="om-mig.html" aria-current="page">Om mig</a></li>
+        <li><a href="casestudy.html">Casestudy</a></li>
+        <li><a href="kontakt.html">Kontakt</a></li>
+      </ul>
+    </nav>
+  </div>
+  <!-- VEJEN: .track i CSS. Bilen ligger inde i den. -->
+  <div class="track" aria-hidden="true">
+    <!--
+      BILEN: Font Awesome gør <i> om til en SVG. JavaScript sætter --p ved scroll, og .car-h flytter bilen ud fra den.
+    -->
+    <div class="car-h"><i class="fa-solid fa-car-side"></i></div>
+  </div>
+</header>
+
+<main>
+  <!-- .page-hero: den lavere top på undersider. -->
+  <section class="page-hero" aria-labelledby="h-om">
+    <!-- .wrap--split: tekst og portræt ved siden af hinanden på computer. -->
+    <div class="wrap wrap--split">
+      <div class="hero-copy">
+        <p class="eyebrow">Om mig</p>
+        <h1 id="h-om">Hvem er Leon?</h1>
+        <p class="lead">Multimediedesigner under uddannelse, med passion for design, mennesker og en god omgang humor på vejen.</p>
+      </div>
+      <!-- .portrait-frame: ramme i 4/5-form med orange skygge bagved. Billedet fylder rammen (object-fit: cover). -->
+      <figure class="portrait">
+        <div class="portrait-frame"><img src="img/portraet.jpg" width="800" height="1000" alt="Leon Gjela sidder ved et bord med havet i baggrunden"></div>
+      </figure>
+    </div>
+  </section>
+
+  <!--
+    .rows og .row: overskrift til venstre og tekst til højre. <mark class="hl"> er de orange fremhævede ord (.hl i CSS), så man kan skimme teksten.
+  -->
+  <section class="sec sec--alt" aria-label="Min historie">
+    <div class="wrap">
+      <div class="rows">
+        <div class="row">
+          <h3>Forbindelser mellem ide og løsning</h3>
+          <div class="prose">
+            <p>Jeg er ikke bare en, der trykker på knapper i Figma eller skriver kode i Visual Studio. Jeg er en person, der <mark class="hl">skaber forbindelser</mark>, både mellem ide og løsning og mellem mennesker.</p>
+            <p>Uanset om jeg sidder i en gruppe og brainstormer, interviewer en bruger eller skitserer en ide, prøver jeg at bringe <mark class="hl">energi, ærlighed og nysgerrighed</mark> ind i processen.</p>
+          </div>
+        </div>
+        <div class="row">
+          <h3>Hvem er jeg, helt ærligt?</h3>
+          <div class="prose">
+            <p>Jeg er <mark class="hl">loyal</mark>. Hvis vi laver noget sammen, er jeg med hele vejen. Jeg er også <mark class="hl">sjov</mark>, fordi lidt grin undervejs gør selv de sværeste opgaver lettere. Mine venner og kolleger siger, at jeg er <mark class="hl">omsorgsfuld og opmuntrende</mark>, og det passer. Jeg elsker at se folk vokse og finde deres styrker.</p>
+            <p>Jeg er <mark class="hl">pålidelig og opmærksom</mark>. Jeg fanger den detalje, de andre måske overså, og jeg husker, hvad der blev sagt sidste uge. Jeg er også <mark class="hl">stædig på den gode måde</mark>: Jeg <mark class="hl">giver ikke op, før løsningen fungerer</mark>, og jeg er ikke bange for at gøre tingene om, hvis det betyder, at vi kommer i mål med noget stærkere.</p>
+            <p><mark class="hl">Sympati og ærlighed</mark> er vigtige værdier for mig, både i arbejdet og i livet. Derfor er jeg <mark class="hl">mig selv 100 procent</mark>, også på den her side. Du kan mærke lidt bilhumor, lidt kant og lidt varme i det hele.</p>
+          </div>
+        </div>
+        <div class="row">
+          <h3>Hvad har jeg arbejdet med?</h3>
+          <div class="prose">
+            <!-- .pull: fremhævet afsnit. CSS gør understregningen (<u>) orange. -->
+            <p class="pull">Værktøjet er bare skiftet ud med <u>designprogrammer, brugerindsigt og digitale løsninger.</u></p>
+            <p>Jeg har været <mark class="hl">mekaniker</mark> og ved, hvordan det er at få olie på hænderne. Jeg har prøvet at have <mark class="hl">ansvar, løse problemer hurtigt og tænke kreativt</mark>, bare med skruenøgler og reservedele.</p>
+            <p>På uddannelsen som multimediedesigner har jeg arbejdet med cases som RSOK, hvor vi har <mark class="hl">researchet, brugertestet, designet og kodet</mark> websites med fokus på både <mark class="hl">brugeroplevelse og målgruppe</mark>. Jeg arbejder <mark class="hl">struktureret og målrettet</mark>. Jeg nyder at <mark class="hl">nørde med detaljer</mark>, men også at have <mark class="hl">det store overblik</mark>.</p>
+          </div>
+        </div>
+        <div class="row">
+          <h3>Hvor vil jeg hen?</h3>
+          <div class="prose">
+            <p>Jeg vil gerne arbejde et sted, hvor <mark class="hl">mennesker, design og teknologi</mark> mødes. Gerne i en virksomhed med plads til både grin, udvikling og ambitiøse løsninger.</p>
+            <p>Jeg leder efter en <mark class="hl">praktikplads eller et studiejob</mark>, hvor jeg kan bidrage med det, jeg kan, og samtidig lære mere og <mark class="hl">vokse som designer og som menneske</mark>.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOBBYER -->
+  <section class="sec" aria-labelledby="h-hobby">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Hobbyer</p>
+        <h2 id="h-hobby">Når jeg ikke sidder foran skærmen</h2>
+        <p class="lead">Min kreativitet stopper ikke, når jeg lukker computeren ned. Jeg har altid haft mange interesser og elsker at udforske nye ideer, lære nye ting og skabe noget fra bunden.</p>
+      </div>
+      <!-- .hobbies: gitter med to hobbyer ved siden af hinanden på computer. -->
+      <div class="hobbies">
+        <!-- .hobby: tekst øverst og billede under (flex, column). De tre andre er bygget på samme måde. -->
+        <article class="hobby">
+          <div class="hobby-text">
+            <!-- Cirkel med Font Awesome-ikon. Skift ikonet ved at ændre navnet i klassen, fx fa-palette. -->
+            <h3><span class="hobby-icon" aria-hidden="true"><i class="fa-solid fa-palette"></i></span>Kunst &amp; maleri</h3>
+            <p class="prose">Jeg elsker at tegne og male. Jeg har blandt andet skabt og solgt mine egne malerier. For mig er kunst en måde at udtrykke tanker, følelser og historier på uden nødvendigvis at bruge ord.</p>
+          </div>
+          <!--
+            width og height holder pladsen fri, loading="lazy" henter først billedet, når man scroller tæt på, og alt læses op af skærmlæsere.
+          -->
+          <figure class="hobby-img"><img src="img/kunst.jpg" width="760" height="760" loading="lazy" alt="Maleri i dyb blå farve med et hvidt penselstrøg i midten"></figure>
+        </article>
+        <article class="hobby">
+          <div class="hobby-text">
+            <h3><span class="hobby-icon" aria-hidden="true"><i class="fa-solid fa-wrench"></i></span>Biler &amp; mekanik</h3>
+            <p class="prose">Jeg har altid haft en stor passion for biler, og hvis der er et bilmærke, jeg virkelig elsker, så er det BMW. Jeg kan bruge timevis på at nørde modeller, motorer, design og alt det tekniske. Med min baggrund som mekaniker elsker jeg også selv at skrue på biler, finde fejl og gøre dem til mine egne. For mig er biler meget mere end bare transport. Det er en hobby, jeg aldrig bliver træt af.</p>
+          </div>
+          <figure class="hobby-img"><img src="img/biler.jpg" width="760" height="760" loading="lazy" alt="Leon sidder på motorhjelmen af sin orange BMW under et tankstationstag om natten"></figure>
+        </article>
+        <article class="hobby">
+          <div class="hobby-text">
+            <h3><span class="hobby-icon" aria-hidden="true"><i class="fa-solid fa-rocket"></i></span>Iværksætteri &amp; ideudvikling</h3>
+            <p class="prose">Jeg er medstifter af NordCase ApS, hvor jeg arbejder med alt fra produktdesign og branding til webshop og forretningsudvikling. Jeg elsker at se en ide udvikle sig til et fysisk produkt, som andre mennesker kan få glæde af.</p>
+            <!-- Link til Nordcase-casen. -->
+            <a class="visit" href="case-nordcase.html">Se Nordcase-casen <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+          </div>
+          <figure class="hobby-img"><img src="img/nordcase.jpg" width="900" height="665" loading="lazy" alt="En sort og en sølvfarvet kuffert med røde fløjlssløjfer"></figure>
+        </article>
+        <article class="hobby">
+          <div class="hobby-text">
+            <h3><span class="hobby-icon" aria-hidden="true"><i class="fa-solid fa-dumbbell"></i></span>Træning &amp; personlig udvikling</h3>
+            <p class="prose">Jeg holder af at løbe og styrketræne. Træning giver mig energi, overskud og mulighed for at udfordre mig selv. Jeg kan godt lide at sætte mål og arbejde hen imod dem, både fysisk, kreativt og professionelt.</p>
+          </div>
+          <figure class="hobby-img"><img src="img/traening.jpg" width="760" height="760" loading="lazy" alt="Leon i et træningscenter foran et squatstativ med vægtskiver og kunstgræs i baggrunden"></figure>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- KOMPETENCER -->
+  <section class="sec sec--alt" aria-labelledby="h-komp">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Kompetencer</p>
+        <h2 id="h-komp">Det jeg kan, og hvor jeg har brugt det</h2>
+      </div>
+      <!--
+        .skills: tre bokse i et gitter. Hver liste (.skill-list) har kompetencens navn (b) og hvor jeg har brugt den (.where).
+      -->
+      <div class="skills">
+        <div>
+          <h3>Design</h3>
+          <ul class="skill-list">
+            <li><b>UI-design i Figma</b><span class="where">RSOK, CouriusCooks</span></li>
+            <li><b>Wireframes og hi-fi prototyper</b><span class="where">RSOK, CouriusCooks</span></li>
+            <li><b>Branding og visuel identitet</b><span class="where">Nordcase</span></li>
+            <li><b>Billedredigering og produktbilleder</b><span class="where">Nordcase</span></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Udvikling</h3>
+          <ul class="skill-list">
+            <li><b>HTML</b><span class="where">RSOK, CouriusCooks</span></li>
+            <li><b>CSS og responsive layouts</b><span class="where">RSOK, CouriusCooks, Nordcase</span></li>
+            <li><b>JavaScript</b><span class="where">CouriusCooks, denne portfolio</span></li>
+            <li><b>Fra Figma til fungerende side</b><span class="where">CouriusCooks</span></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Research og test</h3>
+          <ul class="skill-list">
+            <li><b>Desk research og kundemøde</b><span class="where">RSOK</span></li>
+            <li><b>Content inventory og affinity diagram</b><span class="where">RSOK</span></li>
+            <li><b>Brugertest med think aloud</b><span class="where">RSOK</span></li>
+            <li><b>OOUX, ORCA, user stories og user flows</b><span class="where">CouriusCooks</span></li>
+          </ul>
+        </div>
+      </div>
+      <!-- Personlige styrker som piller (samme .chips som på forsiden). -->
+      <div class="traits-wrap">
+        <p class="eyebrow">Personligt</p>
+        <ul class="chips" aria-label="Personlige styrker">
+          <li>Loyal</li>
+          <li>Pålidelig</li>
+          <li>Opmærksom på detaljen</li>
+          <li>Stædig på den gode måde</li>
+          <li>Humor</li>
+        </ul>
+      </div>
+      <!-- Genbruger .row. Flere klasser kan stå på samme element, og en klasse kan bruges flere steder. -->
+      <div class="testnote row">
+        <div>
+          <p class="eyebrow">Test af den her side</p>
+          <h3>5-sekunders-test</h3>
+        </div>
+        <div class="prose">
+          <p><b>Spørgsmål:</b> Hvad handler denne hjemmeside om?</p>
+          <p><b>Svar:</b> Testpersonen syntes, at siden lignede et CV eller en portfolio for en, der hedder Leon, og så noget med Casestudy, Kontakt og Om mig.</p>
+          <p><b>Konklusion:</b> Siden kommunikerer nogenlunde, at den er en portfolio, på grund af billedet, teksten og knapper som Kontakt mig.</p>
+        </div>
+      </div>
+      <!-- .next: en række med tekst og knap til næste side. -->
+      <div class="next">
+        <p>Se, hvad jeg har lavet</p>
+        <a class="btn btn--accent" href="casestudy.html">Casestudy <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- Bunden er ens på alle sider. -->
+<footer class="foot">
+  <div class="wrap">
+    <span>© 2026 Leon Gjela. Portfolio version 2.</span>
+    <div class="tools">
+      <span>Skrevet i HTML, CSS og JavaScript. Skrifttyper: Roboto og Roboto Mono (Google Fonts). Ikoner: Font Awesome Free (CC BY 4.0).</span>
+    </div>
+  </div>
+</footer>
+
+<!-- Ikoner: Font Awesome Free 6.5.2 (ikoner CC BY 4.0, kode MIT). Scriptet bytter <i>-tagsene ud med SVG. -->
+<!-- Font Awesome 6.5.2: scripts, der gør hvert <i class="fa-...">  om til et SVG-ikon. defer = hent i baggrunden. -->
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/js/fontawesome.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/js/solid.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/js/regular.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/js/brands.min.js"></script>
+<!-- Vores eget JavaScript: bilen, formularen og kopier-knappen. -->
+<script src="js/main.js"></script>
+</body>
+</html>

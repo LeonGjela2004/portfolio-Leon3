@@ -1,0 +1,101 @@
+<!doctype html>
+<!-- casestudy.html: oversigt med de tre cases. Hvert kort fører til en egen side. -->
+<html lang="da">
+<head>
+<meta charset="utf-8">
+<title>Casestudy | Leon Gjela</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- Henter Roboto fra Google Fonts. Navnene bruges i CSS (--f-body og --f-mono). -->
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+<!-- Kobler style.css på. Hver class="..." herunder rammer en regel i den fil. -->
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<!-- MENU: class="top" rammer .top i CSS (position: sticky, så menuen bliver siddende øverst). -->
+<header class="top">
+  <div class="wrap">
+    <!-- Logoet til venstre i menuen (.brand i CSS). Prikken foran navnet tegnes af CSS. -->
+    <a class="brand" href="index.html"><span class="brand-long">Leon Gjela</span></a>
+    <nav aria-label="Hovedmenu">
+      <ul class="nav">
+        <!-- Siden, man er på, har aria-current="page". CSS (.nav a[aria-current="page"]) gør netop det punkt orange. -->
+        <li><a href="om-mig.html">Om mig</a></li>
+        <li><a href="casestudy.html" aria-current="page">Casestudy</a></li>
+        <li><a href="kontakt.html">Kontakt</a></li>
+      </ul>
+    </nav>
+  </div>
+  <!-- VEJEN: .track i CSS. Bilen ligger inde i den. -->
+  <div class="track" aria-hidden="true">
+    <!--
+      BILEN: Font Awesome gør <i> om til en SVG. JavaScript sætter --p ved scroll, og .car-h flytter bilen ud fra den.
+    -->
+    <div class="car-h"><i class="fa-solid fa-car-side"></i></div>
+  </div>
+</header>
+
+<main>
+  <!-- .page-hero: den lavere top på undersider. -->
+  <section class="page-hero" aria-labelledby="h-case">
+    <div class="wrap">
+      <div class="hero-copy">
+        <p class="eyebrow">Casestudy</p>
+        <h1 id="h-case">Tre projekter</h1>
+        <p class="lead">Research, design og test. Vælg et projekt for at se, hvad jeg gjorde, og hvad jeg tog med videre.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sektionen med de tre kort. Kortene bruger de samme klasser som på forsiden. -->
+  <section class="sec sec--alt" aria-label="Vælg casestudy">
+    <div class="wrap">
+      <!-- .cards: gitter med så mange kolonner, som der er plads til. -->
+      <div class="cards">
+        <!-- Hele kortet er et link til casens side. De to andre kort er ens. -->
+        <a class="card" href="case-rsok.html">
+          <img class="card-logo card-logo--rsok" src="img/rsok-logo.png" width="147" height="127" loading="lazy" alt="Rold Skov OK-logoet">
+          <p class="tag">Webdesign og frontend</p>
+          <h3>RSOK: Et løb med retning</h3>
+          <p>Ny og mere overskuelig hjemmeside til Rold Skov Orienteringsklub.</p>
+          <span class="go">Se casen <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
+        </a>
+        <a class="card" href="case-couriuscooks.html">
+          <img class="card-logo card-logo--couriuscooks" src="img/couriuscooks-logo.png" width="442" height="352" loading="lazy" alt="Curious Cooks-logoet">
+          <p class="tag">UX/UI og kode</p>
+          <h3>CouriusCooks</h3>
+          <p>Opskriftshjemmeside med kategorier og Pro Chef-funktioner.</p>
+          <span class="go">Se casen <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
+        </a>
+        <a class="card" href="case-nordcase.html">
+          <img class="card-logo card-logo--nordcase" src="img/nordcase-logo.png" width="931" height="377" loading="lazy" alt="Nordcase-logoet">
+          <p class="tag">Branding og webshop</p>
+          <h3>Nordcase</h3>
+          <p>Visuel identitet, webshop og digital markedsføring for Nordcase ApS.</p>
+          <span class="go">Se casen <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- Bunden er ens på alle sider. -->
+<footer class="foot">
+  <div class="wrap">
+    <span>© 2026 Leon Gjela. Portfolio version 2.</span>
+    <div class="tools">
+      <span>Skrevet i HTML, CSS og JavaScript. Skrifttyper: Roboto og Roboto Mono (Google Fonts). Ikoner: Font Awesome Free (CC BY 4.0).</span>
+    </div>
+  </div>
+</footer>
+
+<!-- Ikoner: Font Awesome Free 6.5.2 (ikoner CC BY 4.0, kode MIT). Scriptet bytter <i>-tagsene ud med SVG. -->
+<!-- Font Awesome 6.5.2: scripts, der gør hvert <i class="fa-...">  om til et SVG-ikon. defer = hent i baggrunden. -->
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/js/fontawesome.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/js/solid.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/js/regular.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/js/brands.min.js"></script>
+<!-- Vores eget JavaScript: bilen, formularen og kopier-knappen. -->
+<script src="js/main.js"></script>
+</body>
+</html>

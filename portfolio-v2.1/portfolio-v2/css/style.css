@@ -1,0 +1,1445 @@
+/* style.css: sidens udseende. HTML-siderne henter filen i <head>, og reglerne rammer elementer via class (.card = class="card").
+   JavaScript sætter variablen --p (hvor langt man er scrollet), som .car-h bruger til at flytte bilen.
+   Rækkefølgen følger siden: variabler, menu og vej, knapper, sektioner, forside, om mig, cases, kontakt, bund. */
+
+/* Variabler: farver, runde hjørner og skrifttyper et sted. Resten af filen bruger dem som var(--navn), så en ændring her slår igennem overalt. */
+:root {
+  color-scheme: dark;
+  /* Farver */
+  --navy: #1F2D5C;
+  --accent: #F5A623;
+  --on-accent: #1A2147;
+  --car: #ED8445;
+  --car-dark: #D2692B;
+  --neon: #4FE3FF;
+  /* Flader */
+  --bg: #070A1C;
+  --surface: #0D1331;
+  --panel: #131B42;
+  --top-bg: #0A0F2B;
+  --band: #1F2D5C;
+  --frame: #18214D;
+  /* Tekst og streger */
+  --fg: #DEE2F2;
+  --head: #F5F7FF;
+  --muted: #9DA6CB;
+  --link: #A9BDFF;
+  --line: rgba(255, 255, 255, 0.10);
+  --line-strong: rgba(255, 255, 255, 0.22);
+  --band-muted: #BCC4E3;
+  --field-bg: #FFFFFF;
+  --field-fg: #1A2040;
+  --error: #FFB9AC;
+  /* Vejen */
+  --asphalt: #0F1330;
+  --lane: #E9EBF3;
+  /* Runde hjørner */
+  --r-sm: 14px;
+  --r-md: 24px;
+  --r-lg: 36px;
+  --overlap: 36px;
+  /* Skrifttyper */
+  --f-body: 'Roboto', system-ui, 'Segoe UI', Arial, sans-serif;
+  --f-mono: 'Roboto Mono', ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+}
+
+
+/* Bredde og højde regnes inklusive kant og luft, så størrelser passer. */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+
+/* Den faste menu må ikke dække en overskrift, når man hopper til et sted på siden. */
+html {
+  scroll-padding-top: 112px;
+}
+
+
+/* Blød scroll, når man klikker på et link til et sted på siden. */
+html {
+  scroll-behavior: smooth;
+}
+
+
+/* Grundstil for hele siden. Tekstfarve og skrifttype arves af alt indeni. */
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--f-body);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+
+/* Fælles stil til alle overskrifter. text-wrap: balance undgår et ord alene på sidste linje. */
+h1, h2, h3, h4 {
+  color: var(--head);
+  text-wrap: balance;
+  margin: 0;
+}
+
+
+/* Ingen standardafstand. Afstande styres med gap i boksene. */
+p {
+  margin: 0;
+}
+
+
+/* Billeder bliver aldrig bredere end deres boks. */
+img {
+  max-width: 100%;
+}
+
+
+/* Lyse blå links, så de kan ses på den mørke baggrund. */
+a {
+  color: var(--link);
+}
+
+
+/* Neon-ramme om det, man står på med Tab-tasten. */
+:focus-visible {
+  outline: 3px solid var(--neon);
+  outline-offset: 3px;
+}
+
+
+/* Holder indholdet i max 1120px og centreret. Ligger inde i næsten alle sektioner. */
+.wrap {
+  max-width: 1120px;
+  margin-inline: auto;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+
+/* MENUEN. position: sticky får den til at blive siddende øverst, når man scroller. */
+.top {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: var(--top-bg);
+  border-bottom: 1px solid var(--line);
+}
+
+
+/* Logo til venstre og menu til højre i en række (flex). */
+.top .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  height: 64px;
+}
+
+
+/* Logoet i menuen. Prikken foran laves af .brand::before. */
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--head);
+  text-decoration: none;
+  font-weight: 900;
+  font-style: italic;
+  font-size: 1.15rem;
+  letter-spacing: -0.01em;
+}
+
+
+/* Orange prik foran navnet. CSS tegner den, den findes ikke i HTML. */
+.brand::before {
+  content: "";
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 12px rgba(245, 166, 35, 0.8);
+}
+
+
+/* Menupunkterne i en række uden listeprikker. */
+.nav {
+  display: flex;
+  gap: 4px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+
+/* Hvert menupunkt er en pille (border-radius: 999px giver helt runde ender). */
+.nav a {
+  display: block;
+  padding: 8px 14px;
+  border-radius: 999px;
+  color: var(--fg);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+
+/* Svag baggrund, når musen er over. */
+.nav a:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+
+/* Siden, man er på, har aria-current="page" i HTML og bliver orange her. */
+.nav a[aria-current="page"] {
+  background: var(--accent);
+  color: var(--on-accent);
+  font-weight: 700;
+}
+
+
+/* VEJEN under menuen. position: relative, så bil og midterstreg kan placeres inde i den. */
+.track {
+  position: relative;
+  height: 34px;
+  background: var(--asphalt);
+  border-top: 1px solid var(--line);
+}
+
+
+/* Stiplet midterstreg: gentaget gradient med 16px streg og 18px hul. */
+.track::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 7px;
+  height: 2px;
+  background: repeating-linear-gradient(to right, var(--lane) 0 16px, transparent 16px 34px);
+  opacity: 0.7;
+}
+
+
+/* BILEN. JavaScript sætter --p (0 øverst, 1 nederst på siden) ved scroll. left regnes ud fra --p, så bilen kører hen over vejen. */
+.car-h {
+  position: absolute;
+  bottom: 4px;
+  left: calc(var(--p, 0) * (100% - 30px));
+  font-size: 24px;
+  line-height: 1;
+  color: var(--car);
+  transform: scaleX(1);
+  filter: drop-shadow(0 0 6px rgba(237, 132, 69, 0.6));
+}
+
+
+/* Font Awesome-scriptet gør <i class="fa-...">  om til denne SVG. Her får ikonerne størrelse og farve fra teksten. */
+.svg-inline--fa {
+  display: inline-block;
+  height: 1em;
+  width: auto;
+  overflow: visible;
+  vertical-align: -0.125em;
+  fill: currentColor;
+}
+
+
+/* Ikon i en knap (pilen) er lidt mindre end teksten. */
+.btn .svg-inline--fa {
+  font-size: 0.9em;
+}
+
+
+/* Grundknap med fælles form. Farven kommer fra .btn--accent eller .btn--line. */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 50px;
+  padding: 12px 26px;
+  border: 2px solid transparent;
+  border-radius: 999px;
+  font: 700 1rem var(--f-body);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+/* Orange udfyldt knap med et orange skær. */
+.btn--accent {
+  background: var(--accent);
+  color: var(--on-accent);
+  box-shadow: 0 8px 30px rgba(245, 166, 35, 0.32);
+}
+
+
+/* Lidt lysere, når musen er over. */
+.btn--accent:hover {
+  filter: brightness(1.07);
+}
+
+
+/* Knap med kun kant. */
+.btn--line {
+  border-color: var(--line-strong);
+  color: var(--head);
+  background: transparent;
+}
+
+
+/* Fyldes svagt, og kanten bliver tydeligere. */
+.btn--line:hover {
+  border-color: var(--head);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+
+/* Række af knapper. flex-wrap sender dem ned på næste linje, hvis der ikke er plads. */
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+
+/* De runde plader. Negativ margin-top skubber hver sektion op over den forrige, så de runde hjørner overlapper. */
+.sec {
+  position: relative;
+  margin-top: calc(var(--overlap) * -1);
+  padding-top: calc(var(--overlap) + clamp(56px, 9vw, 104px));
+  padding-bottom: clamp(56px, 9vw, 104px);
+  background: var(--bg);
+  border-radius: var(--r-lg) var(--r-lg) 0 0;
+  box-shadow: 0 -1px 0 var(--line);
+}
+
+
+/* Lysere baggrund, så sektionerne skifter farve ned ad siden. */
+.sec--alt {
+  background: var(--surface);
+}
+
+
+/* Navy-plade, bruges til kontaktbåndet. */
+.sec--band {
+  background: var(--band);
+  box-shadow: 0 -1px 0 rgba(255, 255, 255, 0.18);
+}
+
+
+/* Lille label over overskrifter: mono-skrift, store bogstaver og neon-farve. */
+.eyebrow {
+  font: 500 0.75rem var(--f-mono);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--neon);
+}
+
+
+/* Label, overskrift og indledning øverst i en sektion. */
+.sec-head {
+  display: grid;
+  gap: 14px;
+  max-width: 44rem;
+  margin-bottom: clamp(32px, 5vw, 56px);
+}
+
+
+/* Sektionsoverskrift. clamp() skalerer størrelsen mellem min og max efter skærmbredden. */
+h2 {
+  font-size: clamp(2rem, 4.6vw, 3.25rem);
+  line-height: 1.08;
+  font-weight: 900;
+  font-style: italic;
+  letter-spacing: -0.025em;
+}
+
+
+/* Hvid overskrift på den blå plade. */
+.sec--band h2 {
+  color: #FFFFFF;
+}
+
+
+/* Indledningstekst, lidt større end brødteksten. */
+.lead {
+  font-size: clamp(1.15rem, 2vw, 1.35rem);
+  line-height: 1.5;
+  color: var(--fg);
+  max-width: 40rem;
+}
+
+
+/* Brødtekst med afstand mellem afsnit og begrænset bredde, så den er nem at læse. */
+.prose {
+  display: grid;
+  gap: 1em;
+  max-width: 65ch;
+}
+
+
+/* Fælles for toppen af alle sider. Baggrunden er to svage lysglimt oven på den mørke farve. */
+.hero, .page-hero {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(60% 70% at 85% 25%, rgba(79, 227, 255, 0.09), transparent 70%),
+    radial-gradient(50% 60% at 10% 90%, rgba(245, 166, 35, 0.10), transparent 70%),
+    var(--bg);
+}
+
+
+/* Den store top på forsiden. */
+.hero {
+  padding-top: clamp(40px, 7vw, 88px);
+  padding-bottom: calc(var(--overlap) + clamp(48px, 7vw, 88px));
+}
+
+
+/* Den lavere top på undersiderne. */
+.page-hero {
+  padding-top: clamp(40px, 6vw, 72px);
+  padding-bottom: calc(var(--overlap) + clamp(32px, 5vw, 56px));
+}
+
+
+/* Tekst og portræt i en grid. */
+.hero .wrap, .page-hero .wrap {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 48px;
+  align-items: center;
+}
+
+
+/* Computer: tekst og portræt ved siden af hinanden i to kolonner. */
+.hero .wrap {
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.7fr);
+  gap: 72px;
+}
+
+
+.page-hero .wrap--split {
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.7fr);
+  gap: 72px;
+}
+
+
+/* Tekstdelen i toppen lagt under hinanden. */
+.hero-copy {
+  display: grid;
+  gap: 28px;
+  justify-items: start;
+}
+
+
+/* Hovedoverskrift. clamp() gør den større på brede skærme. */
+h1 {
+  font-size: clamp(2.6rem, 7vw, 5rem);
+  line-height: 1;
+  font-weight: 900;
+  font-style: italic;
+  letter-spacing: -0.035em;
+}
+
+
+/* Lidt mindre h1 på undersiderne. */
+.page-hero h1 {
+  font-size: clamp(2.4rem, 6vw, 4.2rem);
+}
+
+
+/* Underoverskriften inde i h1, mindre og dæmpet. */
+h1 .sub {
+  display: block;
+  margin-top: 14px;
+  font-size: 0.46em;
+  line-height: 1.15;
+  font-weight: 500;
+  font-style: normal;
+  letter-spacing: -0.015em;
+  color: var(--muted);
+}
+
+
+/* Faktaboksen. auto-fit laver så mange kolonner, som der er plads til. */
+.facts {
+  display: grid;
+  gap: 18px 32px;
+  margin: 0;
+  padding: 22px 26px;
+  width: 100%;
+  background: rgba(19, 27, 66, 0.72);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 170px), 1fr));
+}
+
+
+/* Label i faktaboksen. */
+.facts dt {
+  font: 500 0.72rem var(--f-mono);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+
+/* Værdi i faktaboksen. */
+.facts dd {
+  margin: 0;
+  font-weight: 500;
+  color: var(--head);
+}
+
+
+/* Portrættet. Margen giver plads til den orange skygge bagved. */
+.portrait {
+  position: relative;
+  margin: 0 12px 12px 0;
+  max-width: 420px;
+}
+
+
+/* Orange flade bag billedet, rykket 12px ned og til højre. */
+.portrait::before {
+  content: "";
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  right: -12px;
+  bottom: -12px;
+  background: var(--accent);
+  border-radius: var(--r-lg);
+  box-shadow: 0 0 44px rgba(245, 166, 35, 0.35);
+}
+
+
+/* Rammen om billedet. aspect-ratio: 4 / 5 holder formen, og overflow: hidden runder billedet. */
+.portrait-frame {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  max-width: 100%;
+  overflow: hidden;
+  background: var(--frame);
+  border-radius: var(--r-lg);
+  display: grid;
+  place-items: center;
+}
+
+
+/* Billedet fylder rammen. object-fit: cover beskærer i stedet for at strække det. */
+.portrait-frame img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 30%;
+}
+
+
+/* Pladsholder-bogstaverne LG (ikke i brug, nu hvor der er et billede). */
+.portrait-frame span {
+  font-weight: 900;
+  font-style: italic;
+  font-size: clamp(4rem, 12vw, 7rem);
+  letter-spacing: -0.04em;
+  color: var(--head);
+  opacity: 0.2;
+}
+
+
+/* Billedtekst på portrættet (ikke i brug lige nu). */
+.portrait figcaption {
+  position: absolute;
+  left: 24px;
+  bottom: 24px;
+  z-index: 1;
+  font: 500 0.68rem var(--f-mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+
+/* Små piller i en række. flex-wrap bryder dem over på flere linjer. */
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+
+/* En pille. */
+.chips li {
+  padding: 10px 20px;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--head);
+}
+
+
+/* Gitter af kort. auto-fit laver så mange kolonner, som der er plads til. */
+.cards {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 290px), 1fr));
+}
+
+
+/* Case-kortet. Hele kortet er et link (<a class="card">). */
+.card {
+  display: grid;
+  gap: 14px;
+  align-content: start;
+  min-width: 0;
+  padding: 22px;
+  border-radius: var(--r-md);
+  background: var(--panel);
+  border: 1px solid var(--line);
+  color: var(--fg);
+  text-decoration: none;
+}
+
+
+/* Orange kant, når musen er over. */
+.card:hover {
+  border-color: var(--accent);
+}
+
+
+/* Lille label øverst i kortet. */
+.card .tag {
+  font: 500 0.72rem var(--f-mono);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--neon);
+}
+
+
+/* Kortets titel. */
+.card h3 {
+  font-size: 1.5rem;
+  line-height: 1.15;
+  font-weight: 900;
+}
+
+
+/* Linjen "Se casen" nederst i kortet. */
+.card .go {
+  font-weight: 700;
+  color: var(--accent);
+}
+
+
+/* Rækkerne i "Min historie". */
+.rows {
+  display: grid;
+}
+
+
+/* En række: overskrift og tekst, med en streg over. */
+.row {
+  display: grid;
+  gap: 14px 56px;
+  padding-block: 32px;
+  border-top: 1px solid var(--line-strong);
+}
+
+
+/* Computer: overskrift til venstre og tekst til højre. */
+.row {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+}
+
+
+/* Rækkens overskrift. */
+.row h3 {
+  font-size: 1.35rem;
+  line-height: 1.25;
+  font-weight: 700;
+}
+
+
+/* Det fremhævede afsnit. */
+.pull {
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  line-height: 1.25;
+  font-weight: 500;
+  color: var(--head);
+  max-width: 28ch;
+}
+
+
+/* Understregningen er orange. */
+.pull u {
+  text-decoration-color: var(--accent);
+  text-decoration-thickness: 0.12em;
+  text-underline-offset: 0.16em;
+}
+
+
+/* Fremhævede ord i teksten på Om mig (HTML: <mark class="hl">). Fed orange tekst med en blød orange boks bagved, som en highlighter.
+   box-decoration-break: clone giver hver linje sin egen boks, hvis udtrykket brydes over to linjer. */
+.hl {
+  background: rgba(245, 166, 35, 0.18);
+  color: var(--accent);
+  font-weight: 700;
+  padding: 0.08em 0.4em;
+  border-radius: 0.5em;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+
+/* De tre kompetenceblokke i et gitter. */
+.skills {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+}
+
+
+/* En kompetenceblok. */
+.skills > div {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  padding: 26px 24px 14px;
+  min-width: 0;
+}
+
+
+/* Blokkens overskrift. */
+.skills h3 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+
+/* Kompetencelisten uden listeprikker. */
+.skill-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+
+/* En kompetence. */
+.skill-list li {
+  padding-block: 12px;
+  border-top: 1px solid var(--line);
+}
+
+
+/* Kompetencens navn. */
+.skill-list b {
+  display: block;
+  font-weight: 500;
+  color: var(--head);
+}
+
+
+/* Hvor jeg har brugt den, i lille dæmpet mono-skrift. */
+.where {
+  display: block;
+  font: 400 0.72rem var(--f-mono);
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  margin-top: 2px;
+}
+
+
+/* Området med de personlige styrker (piller). */
+.traits-wrap {
+  margin-top: 40px;
+}
+
+
+/* Afstand mellem labelen og pillerne. */
+.traits-wrap .eyebrow {
+  margin-bottom: 14px;
+}
+
+
+/* Hele casen (<article class="case">). */
+.case {
+  display: grid;
+  gap: 56px;
+}
+
+
+/* Øverste del af casen: intro og proces. */
+.case-top {
+  display: grid;
+  gap: 40px 72px;
+}
+
+
+/* Computer: intro og proces i to kolonner. */
+.case-top {
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+}
+
+
+/* Venstre kolonne: målgruppe og problemstilling. */
+.case-intro {
+  display: grid;
+  gap: 20px;
+  align-content: start;
+  min-width: 0;
+}
+
+
+/* Logo og titel ved siden af hinanden. */
+.case-id {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+
+/* Titelboksen må krympe, så den ikke skubber logoet. */
+.case-id > div:last-child {
+  display: grid;
+  gap: 6px;
+  min-width: 0;
+}
+
+
+/* Det lille logo ved siden af titlen. Højden er fast, og bredden følger billedets form (width: auto). */
+.logo-mark {
+  flex: none;
+  height: 84px;
+  width: auto;
+  border-radius: 16px;
+}
+
+
+/* Overskrifter inde i casen. */
+.case h3 {
+  font-size: clamp(1.8rem, 3.6vw, 2.6rem);
+  line-height: 1.1;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+}
+
+
+/* Målgruppe og problemstilling som begreb/forklaring under hinanden. */
+.meta {
+  display: grid;
+  gap: 20px;
+  margin: 8px 0 0;
+}
+
+
+/* Begrebet (lille label). */
+.meta dt {
+  font: 500 0.72rem var(--f-mono);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+
+/* Forklaringen. */
+.meta dd {
+  margin: 0;
+  max-width: 60ch;
+}
+
+
+/* Link til anden side eller hjemmeside. */
+.visit {
+  justify-self: start;
+  font-weight: 700;
+}
+
+
+/* PROCESSEN. En nummereret liste, hvor tallene er skjult. Ruten tegnes med ::before (prik) og ::after (stiplet linje). */
+.route {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 30px;
+  min-width: 0;
+}
+
+
+/* Hvert trin. position: relative, så prik og linje kan placeres ud fra det. */
+.route > li {
+  position: relative;
+  padding-left: 38px;
+}
+
+
+/* Den orange prik ved trinnet. */
+.route > li::before {
+  content: "";
+  position: absolute;
+  left: 3px;
+  top: 3px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 4px var(--surface), 0 0 14px rgba(245, 166, 35, 0.7);
+}
+
+
+/* Den stiplede linje ned til næste prik. */
+.route > li::after {
+  content: "";
+  position: absolute;
+  left: 9px;
+  top: 24px;
+  bottom: -34px;
+  border-left: 2px dashed var(--line-strong);
+}
+
+
+/* Sidste trin har ingen linje videre. */
+.route > li:last-child::after {
+  display: none;
+}
+
+
+/* Trinnets overskrift (Research, Design, Test). */
+.route h4 {
+  font: 500 0.78rem var(--f-mono);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--head);
+  margin-bottom: 8px;
+}
+
+
+/* Punkterne i trinnet. */
+.steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 6px;
+}
+
+
+/* Boksene "Min rolle" og "Hvad jeg lærte". */
+.case-two {
+  display: grid;
+  gap: 20px;
+}
+
+
+/* Computer: to kolonner. */
+.case-two {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+
+/* En boks. */
+.case-two > div {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  padding: 28px;
+  min-width: 0;
+}
+
+
+/* Boksens overskrift. */
+.case-two h4 {
+  font-size: 1.15rem;
+  margin-bottom: 10px;
+}
+
+
+/* Billederne i en case. auto-fit laver så mange kolonner, som der er plads til. */
+.shots {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+}
+
+
+/* Fjerner browserens standardmargen. */
+.shots figure {
+  margin: 0;
+  min-width: 0;
+}
+
+
+/* Pladsholder til billede (ikke i brug lige nu). */
+.shot {
+  aspect-ratio: 4 / 3;
+  max-width: 100%;
+  display: grid;
+  place-items: center;
+  padding: 12px;
+  text-align: center;
+  background: var(--frame);
+  border: 1px dashed var(--line-strong);
+  border-radius: var(--r-md);
+  font: 500 0.72rem var(--f-mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+
+/* Kun et billede (logoet): en kolonne på højst 560px. */
+.shots--single {
+  grid-template-columns: minmax(0, 560px);
+}
+
+
+/* Små logoer (RSOK, CouriusCooks) vises i højst 260px, så de ikke bliver uskarpe. */
+.shots--logo-lille {
+  grid-template-columns: minmax(0, 260px);
+}
+
+
+/* Logobilledet. height: auto bevarer formen. */
+.shot-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--r-md);
+}
+
+
+/* Billedtekst under billedet. */
+.shots figcaption {
+  margin-top: 10px;
+  font-size: 0.875rem;
+  color: var(--muted);
+}
+
+
+/* Logo i kortet. Samme form (16/10) på alle, og object-fit: contain viser hele logoet uden at beskære. */
+.card-logo {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 10;
+  object-fit: contain;
+  padding: 14px;
+  box-sizing: border-box;
+  border-radius: var(--r-sm);
+}
+
+
+/* Baggrundsfarve til hvert logo, hentet fra selve billedet. */
+.card-logo--nordcase {
+  background: #f2f2f2;
+}
+
+
+.card-logo--rsok {
+  background: #f2f2f2;
+}
+
+
+.card-logo--couriuscooks {
+  background: #b3cfe5;
+}
+
+
+/* Pladsholder i kort (ikke i brug lige nu). */
+.card .shot {
+  aspect-ratio: 16 / 10;
+  border-radius: var(--r-sm);
+}
+
+
+/* Afstand over testboksen på Om mig. */
+.testnote {
+  margin-top: 72px;
+}
+
+
+/* Kontaktsiden: tekst og formular. */
+.contact {
+  display: grid;
+  gap: 48px;
+}
+
+
+/* Computer: tekst og formular ved siden af hinanden. */
+.contact {
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: 80px;
+}
+
+
+/* Venstre side med tekst og kontaktoplysninger. */
+.contact-copy {
+  display: grid;
+  gap: 28px;
+  align-content: start;
+  min-width: 0;
+}
+
+
+/* Den fremhævede tekst øverst. */
+.quote {
+  font-size: 1.2rem;
+  line-height: 1.45;
+  color: #FFFFFF;
+  max-width: 30ch;
+}
+
+
+/* Kontaktoplysningerne under hinanden. */
+.direct {
+  display: grid;
+  gap: 20px;
+  margin: 0;
+  padding: 22px 24px;
+  background: rgba(7, 10, 28, 0.35);
+  border-radius: var(--r-md);
+}
+
+
+/* Label (E-mail, LinkedIn). */
+.direct dt {
+  font: 500 0.72rem var(--f-mono);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--band-muted);
+  margin-bottom: 4px;
+}
+
+
+/* Indholdet. */
+.direct dd {
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 14px;
+  font-weight: 500;
+  color: #FFFFFF;
+}
+
+
+/* Links i kontaktoplysningerne. */
+.direct a {
+  color: #FFFFFF;
+}
+
+
+/* E-mailadressen. JavaScript kopierer teksten herfra (id="mail"). */
+.mail {
+  overflow-wrap: anywhere;
+}
+
+
+/* Kopier-knappen. JavaScript lytter på den (id="kopier"). */
+.copy {
+  appearance: none;
+  background: transparent;
+  color: #FFFFFF;
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 999px;
+  padding: 6px 16px;
+  font: 500 0.85rem var(--f-body);
+}
+
+
+/* Fyldes svagt, når musen er over. */
+.copy:hover {
+  border-color: #FFFFFF;
+}
+
+
+/* Formularen. */
+.form {
+  display: grid;
+  gap: 20px;
+  min-width: 0;
+  color: #FFFFFF;
+}
+
+
+/* Et felt: label, input og fejltekst under hinanden. */
+.field {
+  display: grid;
+  gap: 8px;
+}
+
+
+/* Feltets tekst. */
+.field label {
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+
+/* "(valgfrit)" ved et felt. */
+.opt {
+  font-weight: 400;
+  color: var(--band-muted);
+}
+
+
+/* Alle formularfelter. Hvid baggrund, så de skiller sig ud fra den blå plade. */
+.input {
+  width: 100%;
+  font: inherit;
+  padding: 14px 18px;
+  border: 2px solid transparent;
+  border-radius: var(--r-sm);
+  background: var(--field-bg);
+  color: var(--field-fg);
+}
+
+
+/* Beskedfeltet må kun ændres i højden. */
+textarea.input {
+  min-height: 150px;
+  resize: vertical;
+}
+
+
+/* JavaScript sætter aria-invalid="true", når et felt har en fejl (visFejl i main.js), og så får feltet rød kant. */
+.input[aria-invalid="true"] {
+  border-color: var(--error);
+}
+
+
+/* Fejlteksten under feltet. JavaScript skriver teksten ind. */
+.err {
+  min-height: 1.3em;
+  font-size: 0.9rem;
+  color: var(--error);
+}
+
+
+/* Knap og statusbesked i en række. */
+.form-foot {
+  display: grid;
+  gap: 14px;
+  justify-items: start;
+}
+
+
+/* Beskeden efter afsendelse. JavaScript skriver teksten ind. */
+.status {
+  color: var(--band-muted);
+  font-size: 0.95rem;
+  max-width: 46ch;
+}
+
+
+/* Linket "Alle casestudies" øverst på casesiderne. */
+.crumb {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--link);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+
+/* Understreger, når musen er over. */
+.crumb:hover {
+  text-decoration: underline;
+}
+
+
+/* Nederste række med en tekst og en knap til næste side. */
+.next {
+  margin-top: clamp(40px, 6vw, 72px);
+  padding-top: 28px;
+  border-top: 1px solid var(--line-strong);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+
+/* Teksten i rækken. */
+.next p {
+  font-size: 1.15rem;
+  color: var(--head);
+  font-weight: 700;
+}
+
+
+/* Bunden af siden. */
+.foot {
+  padding-block: 28px;
+  background: var(--band);
+  color: var(--band-muted);
+  font-size: 0.875rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+
+/* Teksten i bunden. */
+.foot .wrap {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px 24px;
+}
+
+
+/* Teksten om, hvad siden er lavet med. */
+.foot .tools {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+
+/* Gitteret med hobbyerne. */
+.hobbies {
+  display: grid;
+  gap: clamp(48px, 7vw, 72px) 40px;
+}
+
+
+/* Computer: to hobbyer ved siden af hinanden. */
+.hobbies {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+
+/* En hobby: tekst øverst og billede under. flex-direction: column lægger dem under hinanden. */
+.hobby {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  min-width: 0;
+}
+
+
+/* Overskrift og tekst. */
+.hobby-text {
+  display: grid;
+  gap: 14px;
+}
+
+
+/* Overskriften med ikonet foran. */
+.hobby-text h3 {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  line-height: 1.15;
+  font-weight: 900;
+  font-style: italic;
+}
+
+
+/* Den runde cirkel om Font Awesome-ikonet. */
+.hobby-icon {
+  flex: none;
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--panel);
+  border: 1px solid var(--line-strong);
+  color: var(--accent);
+  font-size: 1.15rem;
+  font-style: normal;
+}
+
+
+/* Billedet. margin-top: auto skubber det ned, så billederne står på linje. */
+.hobby-img {
+  margin: auto 0 0;
+  overflow: hidden;
+  border-radius: var(--r-lg);
+  background: var(--frame);
+  border: 1px solid var(--line);
+}
+
+
+/* Billedet fylder boksen. */
+.hobby-img img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+
+/* Dybdegående case: ét trin ad gangen (research, indhold, design, test, ændring). */
+.deep-step {
+  display: grid;
+  gap: 28px;
+  align-items: start;
+  padding: 36px 0;
+  border-top: 1px solid var(--line);
+}
+
+
+/* Trin med billede: tekst og billede ved siden af hinanden. */
+.deep-step--img {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+
+/* Teksten i trinnet. */
+.deep-text h3 {
+  font-size: 1.5rem;
+  margin-bottom: 14px;
+}
+
+
+/* Lille mono-label med trinnets nummer og navn. */
+.deep-nr {
+  font: 500 0.75rem var(--f-mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+
+
+/* Afstand mellem afsnit i trinnet. */
+.deep-text .prose + .prose {
+  margin-top: 12px;
+}
+
+
+/* Billedet i trinnet. */
+.deep-fig {
+  margin: 0;
+  min-width: 0;
+}
+
+
+/* Billedtekst. */
+.deep-fig figcaption {
+  margin-top: 10px;
+  font-size: 0.875rem;
+  color: var(--muted);
+}
+
+
+/* .prose er et gitter, så fremhævede ord ville blive til blokke. Her er afsnittet almindelig tekst. */
+.deep-text .prose {
+  display: block;
+}

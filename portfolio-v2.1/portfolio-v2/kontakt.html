@@ -1,0 +1,128 @@
+<!doctype html>
+<!-- kontakt.html: e-mail, LinkedIn og kontaktformular. JavaScript tjekker formularen (del 2 i js/main.js). -->
+<html lang="da">
+<head>
+<meta charset="utf-8">
+<title>Kontakt | Leon Gjela</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- Henter Roboto fra Google Fonts. Navnene bruges i CSS (--f-body og --f-mono). -->
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+<!-- Kobler style.css på. Hver class="..." herunder rammer en regel i den fil. -->
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<!-- MENU: class="top" rammer .top i CSS (position: sticky, så menuen bliver siddende øverst). -->
+<header class="top">
+  <div class="wrap">
+    <!-- Logoet til venstre i menuen (.brand i CSS). Prikken foran navnet tegnes af CSS. -->
+    <a class="brand" href="index.html"><span class="brand-long">Leon Gjela</span></a>
+    <nav aria-label="Hovedmenu">
+      <ul class="nav">
+        <!-- Siden, man er på, har aria-current="page". CSS (.nav a[aria-current="page"]) gør netop det punkt orange. -->
+        <li><a href="om-mig.html">Om mig</a></li>
+        <li><a href="casestudy.html">Casestudy</a></li>
+        <li><a href="kontakt.html" aria-current="page">Kontakt</a></li>
+      </ul>
+    </nav>
+  </div>
+  <!-- VEJEN: .track i CSS. Bilen ligger inde i den. -->
+  <div class="track" aria-hidden="true">
+    <!--
+      BILEN: Font Awesome gør <i> om til en SVG. JavaScript sætter --p ved scroll, og .car-h flytter bilen ud fra den.
+    -->
+    <div class="car-h"><i class="fa-solid fa-car-side"></i></div>
+  </div>
+</header>
+
+<main>
+  <!-- .page-hero: den lavere top på undersider. -->
+  <section class="page-hero" aria-labelledby="h-kontakt">
+    <div class="wrap">
+      <div class="hero-copy">
+        <p class="eyebrow">Kontakt</p>
+        <h1 id="h-kontakt">Kontakt mig</h1>
+        <p class="lead">Du er nået til vejs ende. Ingen fartbøder her, bare en kontaktformular.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- .sec--band: blå plade med kontaktoplysninger og formular. -->
+  <section class="sec sec--band" aria-label="Skriv til mig">
+    <div class="wrap">
+      <!-- .contact: tekst og formular ved siden af hinanden på computer, under hinanden på telefon. -->
+      <div class="contact">
+        <div class="contact-copy">
+          <p class="quote">Jeg søger en praktikplads eller et studiejob. Skriv gerne, hvis du vil snakke design, kode eller biler.</p>
+          <dl class="direct">
+            <div>
+              <dt><i class="fa-regular fa-envelope" aria-hidden="true"></i> E-mail</dt>
+              <!-- Udskift med din rigtige e-mailadresse -->
+              <!-- id="mail" og id="kopier": JavaScript (del 3) kopierer teksten fra #mail, når man klikker på #kopier. -->
+              <dd><span class="mail" id="mail">Gjelaleon@gmail.com</span> <button class="copy" type="button" id="kopier">Kopier</button></dd>
+            </div>
+            <div>
+              <dt><i class="fa-brands fa-linkedin" aria-hidden="true"></i> LinkedIn</dt>
+              <!-- Udskift med dit eget LinkedIn-link -->
+              <!-- Link til LinkedIn. target="_blank" åbner et nyt vindue. -->
+              <dd><a href="https://www.linkedin.com/in/leon-gjela/" target="_blank" rel="noopener">Find mig på LinkedIn</a></dd>
+            </div>
+          </dl>
+        </div>
+
+        <!-- id="kontaktform" bruges af JavaScript (del 2). novalidate slår browserens egne fejl fra, så vores egne vises. -->
+        <form class="form" id="kontaktform" novalidate>
+          <div class="field">
+            <!-- for="navn" hører til input med id="navn". Et klik på teksten flytter markøren til feltet. -->
+            <label for="navn">Dit navn</label>
+            <!-- JavaScript sætter aria-invalid ved fejl, og CSS (.input[aria-invalid="true"]) giver så rød kant. -->
+            <input class="input" id="navn" name="navn" type="text" autocomplete="name" aria-describedby="navn-fejl">
+            <!-- Fejlteksten: feltets id + "-fejl". JavaScript skriver fejlen ind. De andre felter er bygget ens. -->
+            <p class="err" id="navn-fejl" aria-live="polite"></p>
+          </div>
+          <div class="field">
+            <label for="email">E-mailadresse</label>
+            <input class="input" id="email" name="email" type="email" autocomplete="email" aria-describedby="email-fejl">
+            <p class="err" id="email-fejl" aria-live="polite"></p>
+          </div>
+          <div class="field">
+            <label for="firma">Virksomhed <span class="opt">(valgfrit)</span></label>
+            <input class="input" id="firma" name="firma" type="text" autocomplete="organization">
+          </div>
+          <div class="field">
+            <label for="besked">Besked</label>
+            <textarea class="input" id="besked" name="besked" aria-describedby="besked-fejl"></textarea>
+            <p class="err" id="besked-fejl" aria-live="polite"></p>
+          </div>
+          <div class="form-foot">
+            <!-- type="submit" udløser JavaScripts tjek af felterne. -->
+            <button class="btn btn--accent" type="submit">Send besked <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button>
+            <!-- JavaScript skriver beskeden her efter afsendelse. -->
+            <p class="status" id="status" role="status"></p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- Bunden er ens på alle sider. -->
+<footer class="foot">
+  <div class="wrap">
+    <span>© 2026 Leon Gjela. Portfolio version 2.</span>
+    <div class="tools">
+      <span>Skrevet i HTML, CSS og JavaScript. Skrifttyper: Roboto og Roboto Mono (Google Fonts). Ikoner: Font Awesome Free (CC BY 4.0).</span>
+    </div>
+  </div>
+</footer>
+
+<!-- Ikoner: Font Awesome Free 6.5.2 (ikoner CC BY 4.0, kode MIT). Scriptet bytter <i>-tagsene ud med SVG. -->
+<!-- Font Awesome 6.5.2: scripts, der gør hvert <i class="fa-...">  om til et SVG-ikon. defer = hent i baggrunden. -->
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/js/fontawesome.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/js/solid.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/js/regular.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/js/brands.min.js"></script>
+<!-- Vores eget JavaScript: bilen, formularen og kopier-knappen. -->
+<script src="js/main.js"></script>
+</body>
+</html>

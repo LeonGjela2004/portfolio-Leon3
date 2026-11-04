@@ -1,0 +1,183 @@
+<!doctype html>
+<!-- case-rsok.html: case om Rold Skov OK. De tre casesider har samme opbygning og klasser. -->
+<html lang="da">
+<head>
+<meta charset="utf-8">
+<title>RSOK | Casestudy | Leon Gjela</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- Henter Roboto fra Google Fonts. Navnene bruges i CSS (--f-body og --f-mono). -->
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+<!-- Kobler style.css på. Hver class="..." herunder rammer en regel i den fil. -->
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<!-- MENU: class="top" rammer .top i CSS (position: sticky, så menuen bliver siddende øverst). -->
+<header class="top">
+  <div class="wrap">
+    <!-- Logoet til venstre i menuen (.brand i CSS). Prikken foran navnet tegnes af CSS. -->
+    <a class="brand" href="index.html"><span class="brand-long">Leon Gjela</span></a>
+    <nav aria-label="Hovedmenu">
+      <ul class="nav">
+        <!-- Siden, man er på, har aria-current="page". CSS (.nav a[aria-current="page"]) gør netop det punkt orange. -->
+        <li><a href="om-mig.html">Om mig</a></li>
+        <li><a href="casestudy.html" aria-current="page">Casestudy</a></li>
+        <li><a href="kontakt.html">Kontakt</a></li>
+      </ul>
+    </nav>
+  </div>
+  <!-- VEJEN: .track i CSS. Bilen ligger inde i den. -->
+  <div class="track" aria-hidden="true">
+    <!--
+      BILEN: Font Awesome gør <i> om til en SVG. JavaScript sætter --p ved scroll, og .car-h flytter bilen ud fra den.
+    -->
+    <div class="car-h"><i class="fa-solid fa-car-side"></i></div>
+  </div>
+</header>
+
+<main>
+  <!-- .page-hero: den lavere top på undersider. -->
+  <section class="page-hero" aria-labelledby="h-case">
+    <div class="wrap">
+      <div class="hero-copy">
+        <!-- .crumb: link tilbage til oversigten. -->
+        <a class="crumb" href="casestudy.html"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Alle casestudies</a>
+        <p class="eyebrow">Rold Skov Orienteringsklub</p>
+        <h1 id="h-case">RSOK: Et løb med retning</h1>
+        <p class="lead">Ny og mere overskuelig hjemmeside til en orienteringsklub.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- .sec er den runde plade, .sec--alt giver lysere baggrund. -->
+  <section class="sec sec--alt" aria-label="Om casen">
+    <div class="wrap">
+      <article class="case">
+        <!-- .case-top: intro til venstre og proces til højre (to kolonner på computer). -->
+        <div class="case-top">
+          <div class="case-intro">
+            <!-- .meta: begreb (dt) og forklaring (dd) under hinanden. -->
+            <dl class="meta">
+              <div><dt>Målgruppe</dt><dd>Potentielle og nuværende medlemmer, især børnefamilier, unge og naturinteresserede.</dd></div>
+              <div><dt>Problemstilling</dt><dd>RSOKs gamle hjemmeside var uoverskuelig og dårligt organiseret, så det var svært at se, hvad klubben tilbyder. Sporten virker desuden kompleks og afskrækkende for nybegyndere, og klubben har svært ved at tiltrække nye medlemmer.</dd></div>
+            </dl>
+          </div>
+          <!-- .route: nummerliste, hvor CSS skjuler tallene og tegner prikker (::before) og en stiplet linje (::after). -->
+          <ol class="route" aria-label="Processen">
+            <li>
+              <!-- Hvert trin er en overskrift og en liste (.steps). De andre trin er bygget på samme måde. -->
+              <h4>Research</h4>
+              <ul class="steps">
+                <li>Desk research</li>
+                <li>Analyse af indhold og den eksisterende hjemmeside (content inventory)</li>
+                <li>Kundemøde med en repræsentant fra klubben</li>
+              </ul>
+            </li>
+            <li>
+              <h4>Design</h4>
+              <ul class="steps">
+                <li>Affinity diagram og sitemap</li>
+                <li>Skitser, wireframes og hi-fi prototyper i Figma</li>
+                <li>Designprincipper baseret på grids og UI-teori</li>
+              </ul>
+            </li>
+            <li>
+              <h4>Test</h4>
+              <ul class="steps">
+                <li>Brugertest med think aloud-metoden</li>
+                <li>Iterativ forbedring af navigation og indhold</li>
+                <li>Klar kommunikation og tydelig navigation</li>
+              </ul>
+            </li>
+          </ol>
+        </div>
+        <!-- .case-two: boksene "Min rolle" og "Hvad jeg lærte" i to kolonner på computer. -->
+        <div class="case-two">
+          <div>
+            <h4>Min rolle</h4>
+            <p class="prose">Jeg arbejdede med strukturering af indhold, udvikling af layout og kodning i HTML og CSS. Jeg designede wireframes og deltog i tests og evaluering. Jeg hjalp også med at analysere brugernes behov og bygge en mere intuitiv navigationsstruktur.</p>
+          </div>
+          <div>
+            <h4>Hvad jeg lærte</h4>
+            <p class="prose">Jeg lærte, hvor vigtigt det er at analysere rigtigt fra start, og hvordan man bruger brugerfeedback til at skabe et bedre design. Jeg fik erfaring med struktureret indhold og responsive layouts, og jeg blev bedre til at tænke både funktionelt og visuelt i Figma og HTML.</p>
+          </div>
+        </div>
+        <!-- .deep-step: et trin i casen. Tekst og billede ligger ved siden af hinanden (to kolonner). -->
+        <section class="deep-step deep-step--img">
+          <div class="deep-text">
+            <p class="deep-nr">1 · Research</p>
+            <h3>Fra antagelser til viden</h3>
+            <p class="prose">Jeg startede med desk research for at forstå, hvorfor folk søger ud i naturen. Friluftsrådet viser, at 79 % af de hyppigt friluftsaktive nævner afslapning som vigtig motivation, og Idrættens Analyseinstitut viser, at 44 % af voksne helst motionerer i naturen. Dernæst satte vi hypoteser op, fx at unge familier flytter til området og leder efter en aktivitet at dele. Hypoteserne testede vi med 4 kvalitative interviews med samtykke og GDPR-tekst, og målgruppen blev afgrænset til Nordjylland, 18-90 år.</p>
+            <!-- mark.hl: samme orange fremhævning som på Om mig. -->
+            <p class="prose">Interviewene gav nøgleord, som jeg sorterede i et affinity diagram. Fire temaer gik igen: <mark class="hl">pris og gratis prøveperiode</mark>, <mark class="hl">begynderhold og niveauinddeling</mark>, <mark class="hl">fællesskab og sport som familie</mark> og <mark class="hl">tilgængelighed</mark>.</p>
+          </div>
+          <!-- Billedet i trinnet. figcaption er billedteksten. -->
+          <figure class="deep-fig"><img class="shot-img" src="img/rsok-affinity.jpg" width="827" height="861" loading="lazy" alt="Affinity diagram med gule sedler samlet i grupper som Priser, Prøveperiode, Niveau inddeling, Fællesskab og Tilgængelighed"><figcaption>Affinity diagram: interviewenes nøgleord samlet i temaer</figcaption></figure>
+        </section>
+        <section class="deep-step deep-step--img">
+          <div class="deep-text">
+            <p class="deep-nr">2 · Indhold og struktur</p>
+            <h3>Fra temaer til sider</h3>
+            <p class="prose">Temaerne blev til indhold. Spørgsmål om pris og prøveperiode fik en plads på siden Nyt medlem sammen med udstyr, niveau og en tydelig indmeldelsesknap. Fællesskabet, træningstiderne og familiearrangementer blev samlet under Aktiviteter og Klubhåndbog, og praktisk information som kontaktpersoner, klubhus og parkering fik sin egen side.</p>
+            <p class="prose">Jeg tegnede det som et sitemap med seks sider: Hjem, Nyt medlem, Klubhåndbog, Aktiviteter, Praktisk info og Medlemsside. Hver side har en global navigation, og forsiden har desuden en lokal navigation, der leder nye besøgende videre.</p>
+          </div>
+          <figure class="deep-fig"><img class="shot-img" src="img/rsok-sitemap.jpg" width="1366" height="826" loading="lazy" alt="Sitemap over RSOKs hjemmeside med seks sider og deres sektioner"><figcaption>Sitemap: seks sider og indholdet på hver af dem</figcaption></figure>
+        </section>
+        <section class="deep-step deep-step--img">
+          <div class="deep-text">
+            <p class="deep-nr">3 · Design</p>
+            <h3>Fra struktur til prototype</h3>
+            <p class="prose">Strukturen blev til skitser, wireframes og til sidst hi-fi prototyper i Figma. Designet bruger en varm cremefarve og mørkegrøn, som passer til skoven, og grids og UI-teori til at holde siderne ens og overskuelige.</p>
+          </div>
+          <figure class="deep-fig"><img class="shot-img" src="img/rsok-hifi.jpg" width="1800" height="1554" loading="lazy" alt="De seks sider i RSOKs hi-fi design i creme og mørkegrøn"><figcaption>Hi-fi design af de seks sider</figcaption></figure>
+        </section>
+        <section class="deep-step">
+          <div class="deep-text">
+            <p class="deep-nr">4 · Test</p>
+            <h3>Think aloud med 4 deltagere</h3>
+            <p class="prose">Jeg testede hi-fi prototypen på en bærbar med 4 deltagere, som tænkte højt, mens de løste 5 opgaver. Alle fandt Aktiviteter med det samme (opgave 1), og alle fandt kontaktoplysningerne i den globale navigation (opgave 3). Tre ud af fire brugte den lokale navigation på forsiden til at finde, hvordan man kommer i gang (opgave 4).</p>
+            <p class="prose">Testen viste også svagheder. En deltager ledte efter et søgefelt for at finde klubbens historie, og to af fire scrollede ned i footeren for at finde kontakt. Opgave 5 gav mest problemer: familie- og børnearrangementer var ikke tydeligt navngivet, og først efter omformuleringer fandt 3 ud af 4 frem til Tirsdagstræning i Klubhåndbogen.</p>
+          </div>
+        </section>
+        <section class="deep-step">
+          <div class="deep-text">
+            <p class="deep-nr">5 · Ændring</p>
+            <h3>Fra test til næste iteration</h3>
+            <p class="prose">Testen bekræftede, at navigationen virker, men pegede på tre forbedringer: <mark class="hl">en søgefunktion</mark>, <mark class="hl">kontaktoplysninger i footeren</mark> og <mark class="hl">familievenlige arrangementer, der er tydeligt navngivet og synlige</mark>. Det hænger sammen med research: familier og fællesskab var et af interviewenes hovedtemaer, så det skal være lettere at finde.</p>
+          </div>
+        </section>
+        <!-- Billederne: .shots er et gitter. Her er der et billede (logoet), og .shots--single begrænser bredden. -->
+        <div class="shots shots--single shots--logo-lille">
+          <figure><img class="shot-img" src="img/rsok-logo.png" width="147" height="127" loading="lazy" alt="Rold Skov OK-logoet: røde og hvide flader med en gevir og teksten ROLD SKOV OK"><figcaption>Logo og visuel identitet</figcaption></figure>
+        </div>
+      </article>
+
+      <!-- .next: en række med tekst og knap til næste side. -->
+      <div class="next">
+        <a class="btn btn--line" href="casestudy.html"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Alle casestudies</a>
+        <a class="btn btn--accent" href="case-couriuscooks.html">Næste case: CouriusCooks <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- Bunden er ens på alle sider. -->
+<footer class="foot">
+  <div class="wrap">
+    <span>© 2026 Leon Gjela. Portfolio version 2.</span>
+    <div class="tools">
+      <span>Skrevet i HTML, CSS og JavaScript. Skrifttyper: Roboto og Roboto Mono (Google Fonts). Ikoner: Font Awesome Free (CC BY 4.0).</span>
+    </div>
+  </div>
+</footer>
+
+<!-- Ikoner: Font Awesome Free 6.5.2 (ikoner CC BY 4.0, kode MIT). Scriptet bytter <i>-tagsene ud med SVG. -->
+<!-- Font Awesome 6.5.2: scripts, der gør hvert <i class="fa-...">  om til et SVG-ikon. defer = hent i baggrunden. -->
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/js/fontawesome.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/js/solid.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/js/regular.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/js/brands.min.js"></script>
+<!-- Vores eget JavaScript: bilen, formularen og kopier-knappen. -->
+<script src="js/main.js"></script>
+</body>
+</html>
